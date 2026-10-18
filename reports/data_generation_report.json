@@ -1,0 +1,10 @@
+{
+  "seed_patients": 42,
+  "seed_wearables": 43,
+  "patients": 60,
+  "observations": 34560,
+  "events": 90,
+  "cadence_minutes": 5,
+  "days": 2,
+  "synthetic_only": true
+}

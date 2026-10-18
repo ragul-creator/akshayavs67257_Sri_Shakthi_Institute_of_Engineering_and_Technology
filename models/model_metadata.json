@@ -1,0 +1,17 @@
+{
+  "model_version": "cardiotwin-gb-calibrated-0.2.0",
+  "model_type": "GradientBoostingClassifier + Platt calibration",
+  "probability_calibration": "Platt scaling fit on held-out validation patients",
+  "threshold": 0.25,
+  "threshold_policy": "F1-maximizing threshold selected on validation patients",
+  "forecast_horizon_minutes": 60,
+  "train_patients": 42,
+  "validation_patients": 9,
+  "test_patients": 9,
+  "python_version": "3.12.10",
+  "numpy_version": "2.5.4",
+  "pandas_version": "3.0.6",
+  "scikit_learn_version": "1.9.1",
+  "synthetic_data_only": true,
+  "clinical_validation": false
+}

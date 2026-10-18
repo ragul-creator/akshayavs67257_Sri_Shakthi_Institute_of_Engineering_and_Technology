@@ -1,0 +1,176 @@
+{
+  "baseline_logistic": {
+    "precision": 0.06357103372028745,
+    "recall": 0.6845238095238095,
+    "f1": 0.11633788568538189,
+    "roc_auc": 0.6891043897622845,
+    "pr_auc": 0.0629722505825722,
+    "brier": 0.23093439817681177,
+    "confusion_matrix": [
+      [
+        3322,
+        1694
+      ],
+      [
+        53,
+        115
+      ]
+    ]
+  },
+  "ablations": {
+    "ehr_only": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "roc_auc": 0.5205058099794941,
+      "pr_auc": 0.03568830309901738,
+      "brier": 0.03141547314592387,
+      "confusion_matrix": [
+        [
+          5016,
+          0
+        ],
+        [
+          168,
+          0
+        ]
+      ],
+      "threshold": 0.05
+    },
+    "wearable_only": {
+      "precision": 0.20175438596491227,
+      "recall": 0.27380952380952384,
+      "f1": 0.23232323232323232,
+      "roc_auc": 0.8018086171869067,
+      "pr_auc": 0.15295335006028885,
+      "brier": 0.02940832053070894,
+      "confusion_matrix": [
+        [
+          4834,
+          182
+        ],
+        [
+          122,
+          46
+        ]
+      ],
+      "threshold": 0.1
+    },
+    "fusion": {
+      "precision": 0.24347826086956523,
+      "recall": 0.16666666666666666,
+      "f1": 0.1978798586572438,
+      "roc_auc": 0.7991006161236425,
+      "pr_auc": 0.1526953040818144,
+      "brier": 0.029461371300583534,
+      "confusion_matrix": [
+        [
+          4929,
+          87
+        ],
+        [
+          140,
+          28
+        ]
+      ],
+      "threshold": 0.14
+    },
+    "personalized": {
+      "precision": 0.5866666666666667,
+      "recall": 0.2619047619047619,
+      "f1": 0.36213991769547327,
+      "roc_auc": 0.8325364785068733,
+      "pr_auc": 0.3386043513882771,
+      "brier": 0.026131856620737064,
+      "confusion_matrix": [
+        [
+          4985,
+          31
+        ],
+        [
+          124,
+          44
+        ]
+      ],
+      "threshold": 0.25
+    }
+  },
+  "selected_event_metrics": {
+    "event_detection_rate": 1.0,
+    "mean_early_warning_minutes": 26.071428571428573,
+    "false_alerts_per_patient_day": 1.7222222222222223,
+    "test_events": 14
+  },
+  "robustness": {
+    "sensor_noise": {
+      "precision": 0.5263157894736842,
+      "recall": 0.23809523809523808,
+      "f1": 0.32786885245901637,
+      "roc_auc": 0.8223731677679046,
+      "pr_auc": 0.3148892447785896,
+      "brier": 0.02663012784492118,
+      "confusion_matrix": [
+        [
+          4980,
+          36
+        ],
+        [
+          128,
+          40
+        ]
+      ]
+    },
+    "simulated_current_reading_loss_15pct": {
+      "precision": 0.6027397260273972,
+      "recall": 0.2619047619047619,
+      "f1": 0.3651452282157676,
+      "roc_auc": 0.8327744076099339,
+      "pr_auc": 0.3365692979169496,
+      "brier": 0.026167466617575838,
+      "confusion_matrix": [
+        [
+          4987,
+          29
+        ],
+        [
+          124,
+          44
+        ]
+      ]
+    }
+  },
+  "calibration_bins": [
+    {
+      "mean_predicted": 0.004653907681741241,
+      "observed_fraction": 0.002254791431792559
+    },
+    {
+      "mean_predicted": 0.00597768551321611,
+      "observed_fraction": 0.0022271714922048997
+    },
+    {
+      "mean_predicted": 0.007546610947194118,
+      "observed_fraction": 0.008130081300813009
+    },
+    {
+      "mean_predicted": 0.010074154834673336,
+      "observed_fraction": 0.013996889580093312
+    },
+    {
+      "mean_predicted": 0.0127676588357212,
+      "observed_fraction": 0.02631578947368421
+    },
+    {
+      "mean_predicted": 0.01909809104273407,
+      "observed_fraction": 0.027777777777777776
+    },
+    {
+      "mean_predicted": 0.03516717165868722,
+      "observed_fraction": 0.029320987654320986
+    },
+    {
+      "mean_predicted": 0.12765619758907684,
+      "observed_fraction": 0.14969135802469136
+    }
+  ]
+}
