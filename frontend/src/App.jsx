@@ -1,12 +1,14 @@
 import React,{useEffect,useState} from "react";
 import {api} from "./services/api.js";
 import PatientSidebar from "./components/PatientSidebar.jsx";
+import VitalCards from "./components/VitalCards.jsx";
 import Timeline from "./components/Timeline.jsx";
 import ForecastPanel from "./components/ForecastPanel.jsx";
-import StatePanel from "./components/StatePanel.jsx";
+import ForecastHistory from "./components/ForecastHistory.jsx";
 import ExplanationPanel from "./components/ExplanationPanel.jsx";
 import ScenarioLab from "./components/ScenarioLab.jsx";
 import EvaluationView from "./components/EvaluationView.jsx";
+import RightContext from "./components/RightContext.jsx";
 import "./styles.css";
 
 export default function App(){
@@ -15,7 +17,7 @@ export default function App(){
   const [twin,setTwin]=useState(null);
   const [observations,setObservations]=useState([]);
   const [evaluation,setEvaluation]=useState(null);
-  const [view,setView]=useState("twin");
+  const [view,setView]=useState("overview");
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState("");
 
@@ -47,90 +49,126 @@ export default function App(){
   useEffect(()=>{loadPatient(patientId)},[patientId]);
 
   const step=async steps=>{
-    setBusy(true);setError("");
+    setBusy(true);
+    setError("");
     try{
       const next=await api.step(patientId,steps);
       setTwin(next);
       setObservations(await api.observations(patientId,96));
-    }catch(err){setError(err.message || String(err))}
-    finally{setBusy(false)}
+    }catch(err){
+      setError(err.message || String(err));
+    }finally{
+      setBusy(false);
+    }
   };
 
   const reset=async()=>{
-    setBusy(true);setError("");
+    setBusy(true);
+    setError("");
     try{
       await api.reset(patientId);
       await loadPatient(patientId);
-    }catch(err){setError(err.message || String(err))}
-    finally{setBusy(false)}
+    }catch(err){
+      setError(err.message || String(err));
+    }finally{
+      setBusy(false);
+    }
   };
 
   const runScenario=async name=>{
-    setBusy(true);setError("");
-    try{return await api.scenario(patientId,name)}
-    catch(err){setError(err.message || String(err));throw err}
-    finally{setBusy(false)}
+    setBusy(true);
+    setError("");
+    try{
+      return await api.scenario(patientId,name);
+    }catch(err){
+      setError(err.message || String(err));
+      throw err;
+    }finally{
+      setBusy(false);
+    }
   };
 
-  return <div className="shell">
+  const profile=twin?.profile;
+  const current=twin?.current_state;
+
+  return <div className="appFrame">
     <PatientSidebar
       patients={patients}
       patientId={patientId}
-      twin={twin}
       onSelect={setPatientId}
-      onStep={step}
-      onReset={reset}
       busy={busy}
     />
 
-    <main className="workspace">
-      <div className="topBar">
-        <div className="viewTabs">
-          <button className={view==="twin"?"active":""} onClick={()=>setView("twin")}>Twin workspace</button>
-          <button className={view==="evaluation"?"active":""} onClick={()=>setView("evaluation")}>Evaluation</button>
-        </div>
-        <div className="modelStamp">
-          <span>{twin?.forecast?.model_version || "model loading"}</span>
-          <b>{busy?"working":"ready"}</b>
-        </div>
-      </div>
-
+    <main className="mainColumn">
       {error&&<div className="errorBanner">{error}</div>}
 
-      {view==="evaluation"
-        ? <EvaluationView evaluation={evaluation}/>
-        : !twin
-          ? <div className="loadingState">Loading patient twin...</div>
-          : <div className="twinWorkspace">
-              <header className="patientHeader">
-                <div>
-                  <span className="sectionKicker">LIVE REPLAY / OBSERVABLE STATE ONLY</span>
-                  <h1>{twin.patient_id}</h1>
-                  <p>{new Date(twin.current_state.timestamp).toLocaleString()} · {twin.current_state.activity_state}</p>
-                </div>
-                <div className="vitalReadout">
-                  <div><span>HR</span><b>{twin.current_state.heart_rate_bpm}</b><small>bpm</small></div>
-                  <div><span>BP</span><b>{twin.current_state.systolic_bp}/{twin.current_state.diastolic_bp}</b><small>mmHg</small></div>
-                  <div><span>HRV</span><b>{twin.current_state.hrv_ms}</b><small>ms</small></div>
-                </div>
+      {!twin
+        ? <div className="loadingState">Loading patient twin...</div>
+        : <div className={"workspaceLayout"+(view==="evaluation"?" evaluationMode":"")}>
+            <section className="centerWorkspace">
+              <header className="workspaceHeader">
+                {view==="evaluation" ? <div className="workspaceIdentity">
+                  <div className="titleRow"><h1>Model Evaluation</h1></div>
+                  <p>Held-out synthetic-patient performance, operating points, and robustness checks.</p>
+                </div> : <>
+                  <div className="workspaceIdentity">
+                    <div className="titleRow">
+                      <h1>Digital Twin</h1>
+                      <span>{twin.patient_id}</span>
+                      {profile&&<small>{profile.age} years · {profile.sex}</small>}
+                    </div>
+                    <p>Observable-state replay for synthetic cardiovascular research.</p>
+                  </div>
+                  <div className="observationStamp">
+                    <span>Last observation</span>
+                    <strong>{new Date(current.timestamp).toLocaleString()}</strong>
+                  </div>
+                </>}
               </header>
 
-              <ForecastPanel forecast={twin.forecast} current={twin.current_state}/>
+              <nav className="workspaceTabs" aria-label="CardioTwin views">
+                <button className={view==="overview"?"active":""} onClick={()=>setView("overview")}>Overview</button>
+                <button className={view==="scenarios"?"active":""} onClick={()=>setView("scenarios")}>Scenarios</button>
+                <button className={view==="evaluation"?"active":""} onClick={()=>setView("evaluation")}>Evaluation</button>
+              </nav>
 
-              <div className="primaryGrid">
-                <Timeline observations={observations}/>
-                <StatePanel state={twin.estimated_state}/>
-              </div>
+              {view!=="evaluation"&&<div className="replayStrip">
+                <div className="replayInfo">
+                  <span>Replay clock</span>
+                  <strong>{current.activity_state}</strong>
+                  <div className="replayProgress"><i style={{width:(twin.simulation.progress*100)+"%"}}/></div>
+                  <small>{Math.round(twin.simulation.progress*100)}%</small>
+                </div>
+                <div className="replayActions">
+                  <button onClick={()=>step(1)} disabled={busy}>+ 5 min</button>
+                  <button onClick={()=>step(6)} disabled={busy}>+ 30 min</button>
+                  <button className="secondaryButton" onClick={reset} disabled={busy}>Reset</button>
+                </div>
+              </div>}
 
-              <div className="secondaryGrid">
+              {view==="overview"&&<>
+                <VitalCards twin={twin}/>
+                <Timeline
+                  observations={observations}
+                  baselineHr={current.baseline_hr}
+                  baselineSbp={current.baseline_systolic_bp}
+                />
+                <ForecastPanel forecast={twin.forecast}/>
+                <ForecastHistory history={twin.forecast_history} threshold={twin.forecast.threshold}/>
                 <ExplanationPanel items={twin.forecast.explanation}/>
-                <ScenarioLab patientId={patientId} runScenario={runScenario} busy={busy}/>
-              </div>
+              </>}
 
-              <footer className="workspaceFoot">
-                Synthetic physiology and hidden-state events. Retrospective event truth is kept separate from this live workspace.
-              </footer>
-            </div>}
+              {view==="scenarios"&&
+                <ScenarioLab patientId={patientId} runScenario={runScenario} busy={busy}/>
+              }
+
+              {view==="evaluation"&&
+                <EvaluationView evaluation={evaluation}/>
+              }
+            </section>
+
+            {view!=="evaluation"&&<RightContext twin={twin}/>}
+          </div>}
     </main>
   </div>;
 }
