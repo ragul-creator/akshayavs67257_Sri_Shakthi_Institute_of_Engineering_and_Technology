@@ -8,6 +8,21 @@
 
 **CardioTwin — Personalized Cardiovascular Digital Twin for 60-Minute Early Deterioration Forecasting**
 
+## Team Details
+
+**Challenge team name:** `akshayavs67257`
+
+| Name | Role |
+|---|---|
+| Akshaya V S | Team Leader |
+| Kruthik Pranav TR | Team Member |
+| Ragul S | Team Member |
+| Sanjay S M | Team Member |
+
+## College / Incubator Information
+
+**Sri Shakthi Institute of Engineering and Technology, Coimbatore**
+
 CardioTwin is a synthetic-data cardiovascular digital-twin research prototype that combines EHR-style patient history with wearable-style physiological time-series data to maintain an evolving patient-specific state and estimate whether a simulator-defined cardiovascular deterioration event will begin within the next **60 minutes**.
 
 > **Responsible-use boundary:** CardioTwin is an educational/research prototype built on synthetic data. It is not clinically validated and must not be used for diagnosis, emergency triage, medication decisions, treatment selection, or real-patient risk prediction.
@@ -18,6 +33,8 @@ CardioTwin is a synthetic-data cardiovascular digital-twin research prototype th
 
 The following challenge deliverables are included directly in this public repository:
 
+- [x] **Team Details**
+- [x] **College / Incubator Information**
 - [x] **Project Title**
 - [x] **Problem Statement**
 - [x] **Healthcare Use Case**
