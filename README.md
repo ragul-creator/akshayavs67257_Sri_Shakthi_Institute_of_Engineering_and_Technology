@@ -40,13 +40,13 @@ The following challenge deliverables are included directly in this public reposi
 - [x] **Healthcare Use Case**
 - [x] **Technical Stack**
 - [x] **AI/ML Model and Framework Details**
-- [x] **15–20 minute Demo Video uploaded to YouTube** — [Watch the CardioTwin demo](https://youtu.be/1hR419RIFY4)
+- [x] **Demo Video uploaded to YouTube** — [Watch the CardioTwin demo](https://youtu.be/1hR419RIFY4)
 - [x] **Open-Source License Details**
 - [x] **Architecture Diagram in PDF format** — [View architecture.pdf](docs/architecture.pdf)
 - [x] **Project Presentation (PPTX/PDF) covering project details and outcomes** — [Final PPTX](docs/Cardio_Twin_Final_Clean.pptx) · [PDF](docs/presentation.pdf)
 - [x] **Publicly accessible repository and project files**
 
-**Public repository:** https://github.com/ragul-creator/digital-twin
+**Public repository:** https://github.com/ragul-creator/akshayavs67257_Sri_Shakthi_Institute_of_Engineering_and_Technology
 
 Additional technical documentation:
 
@@ -584,7 +584,7 @@ Detailed contract:
 ## Repository Structure
 
 ```text
-digital-twin/
+akshayavs67257_Sri_Shakthi_Institute_of_Engineering_and_Technology/
 ├── backend/               # FastAPI routes, schemas, SQLite audit storage
 ├── data/                  # Synthetic sample profiles and observations
 ├── data_generation/       # Patient + hidden physiology simulation
@@ -615,8 +615,8 @@ digital-twin/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ragul-creator/digital-twin.git
-cd digital-twin
+git clone https://github.com/ragul-creator/akshayavs67257_Sri_Shakthi_Institute_of_Engineering_and_Technology.git
+cd akshayavs67257_Sri_Shakthi_Institute_of_Engineering_and_Technology
 ```
 
 ### 2. Create a Python virtual environment
@@ -834,6 +834,6 @@ Scenario trajectories are hypothetical observation-space simulations, not causal
 
 This repository is public:
 
-**https://github.com/ragul-creator/digital-twin**
+**https://github.com/ragul-creator/akshayavs67257_Sri_Shakthi_Institute_of_Engineering_and_Technology**
 
 The source code, README, architecture PDF, presentation PDF, model documentation, API documentation, license, tests, and supporting files are available directly from the repository without requesting additional repository permissions.
