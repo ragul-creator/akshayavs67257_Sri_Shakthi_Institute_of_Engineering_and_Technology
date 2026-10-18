@@ -40,6 +40,7 @@ The following challenge deliverables are included directly in this public reposi
 - [x] **Healthcare Use Case**
 - [x] **Technical Stack**
 - [x] **AI/ML Model and Framework Details**
+- [x] **15–20 minute Demo Video uploaded to YouTube** — [Watch the CardioTwin demo](https://youtu.be/1hR419RIFY4)
 - [x] **Open-Source License Details**
 - [x] **Architecture Diagram in PDF format** — [View architecture.pdf](docs/architecture.pdf)
 - [x] **Presentation in PDF format covering project details and outcomes** — [View presentation.pdf](docs/presentation.pdf)
@@ -756,6 +757,12 @@ A reviewer can understand the project quickly with this sequence:
 ### Project Presentation
 
 [**Project Presentation — PDF**](docs/presentation.pdf)
+
+### Demo Video
+
+[**Watch the CardioTwin 19-minute Demo Video on YouTube**](https://youtu.be/1hR419RIFY4)
+
+The video demonstrates the working CardioTwin prototype end to end, including the project motivation, architecture, synthetic-data design, ML pipeline, live dashboard, replay, SHAP explanations, scenario trajectories, evaluation, robustness testing, engineering details, and responsible-use limitations.
 
 ### Model Documentation
 
