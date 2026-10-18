@@ -43,7 +43,7 @@ The following challenge deliverables are included directly in this public reposi
 - [x] **15–20 minute Demo Video uploaded to YouTube** — [Watch the CardioTwin demo](https://youtu.be/1hR419RIFY4)
 - [x] **Open-Source License Details**
 - [x] **Architecture Diagram in PDF format** — [View architecture.pdf](docs/architecture.pdf)
-- [x] **Presentation in PDF format covering project details and outcomes** — [View presentation.pdf](docs/presentation.pdf)
+- [x] **Project Presentation (PPTX/PDF) covering project details and outcomes** — [Final PPTX](docs/Cardio_Twin_Final_Clean.pptx) · [PDF](docs/presentation.pdf)
 - [x] **Publicly accessible repository and project files**
 
 **Public repository:** https://github.com/ragul-creator/digital-twin
@@ -755,6 +755,8 @@ A reviewer can understand the project quickly with this sequence:
 [**Architecture Diagram — PDF**](docs/architecture.pdf)
 
 ### Project Presentation
+
+[**Final CardioTwin Presentation — PPTX**](docs/Cardio_Twin_Final_Clean.pptx)
 
 [**Project Presentation — PDF**](docs/presentation.pdf)
 
