@@ -7,3 +7,5 @@ frontend/dist/
 *.db
 data/full_*.csv
 data/features.csv
+data/sample_latent.csv
+reports/test_predictions.csv

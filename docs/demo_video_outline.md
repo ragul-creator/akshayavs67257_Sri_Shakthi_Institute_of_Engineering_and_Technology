@@ -1,31 +1,71 @@
-# CardioTwin demonstration video outline — 20+ minutes
+# CardioTwin demo outline
 
-## 0:00–2:00 — Problem and responsible-use boundary
-Introduce the gap between occasional clinical snapshots and continuously changing physiology. State clearly that CardioTwin uses only synthetic data and forecasts a simulator-defined pattern, not heart attacks or diagnoses.
+## 1. Start with the problem, not the dashboard
 
-## 2:00–4:00 — Digital twin concept
-Show the architecture and explain the persistent patient profile, replay clock, rolling physiology, personal baseline, current forecast, data quality, history, and scenario history.
+Explain that the project asks whether observable synthetic physiology can anticipate a separate hidden deterioration process.
 
-## 4:00–7:00 — Synthetic data and event rule
-Open sample_patients.csv and sample_wearables.csv. Explain 5-minute simulation cadence and the explicit assumption that blood pressure at this cadence is simulated. Show sample_events.csv. Explain the 12-hour reference baseline, +22 bpm HR threshold, +17 mmHg systolic threshold, 20-minute minimum duration, and 60-minute forecast label.
+State the responsible-use boundary immediately.
 
-## 7:00–10:00 — Leakage-safe ML workflow
-Show preprocessing.py and train.py. Explain patient-level 70/15/15 splitting, trailing rolling windows, absence of event-log features, logistic baseline, four ablations, gradient boosting, validation-only probability calibration, and validation-selected alert threshold.
+## 2. Show the simulator separation
 
-## 10:00–12:00 — Genuine evaluation
-Open the Model Evaluation screen. At the current reproducible seed, the personalized calibrated model has ROC-AUC about 0.833, PR-AUC about 0.339, F1 about 0.362, and Brier score about 0.026. Explain that exact metrics come from reports/evaluation_results.json and may change if simulation configuration or seeds change. Show the ablation table and robustness results. Explicitly discuss false alerts rather than presenting accuracy alone.
+Open data_generation/physiology.py and generate_events.py.
 
-## 12:00–15:00 — Live digital twin replay
-Select a patient. Show current HR, BP, baseline, data quality, and observation timestamp. Press Advance +5 min several times. Point out that charts and forecasts update from actual FastAPI responses and a saved model, not hardcoded UI values.
+Explain that hidden stress/autonomic/hemodynamic/recovery/deterioration states are simulation truth. HR/BP/HRV are noisy observations. The target comes from hidden deterioration, not an HR/BP threshold.
 
-## 15:00–17:00 — Explainability
-Show the top model-influence features and baseline deviations. Emphasize that feature influence is not causal or medical evidence.
+Show that sample_latent.csv is ignored by Git and not used by the model.
 
-## 17:00–19:00 — What-if simulation
-Run Return toward baseline and Increased activity. Compare baseline and hypothetical model forecasts. State that the scenario works on a copied state and is not a treatment-effect estimate. Demonstrate that returning to the twin view leaves the original current state unchanged.
+## 3. Show leakage controls
 
-## 19:00–21:00 — Engineering quality and limitations
-Show the tests, deterministic seeds, model metadata, SQLite audit database, API docs, and frontend production build. Discuss synthetic shortcuts, limited pilot scale, lack of clinical validation, and current explanation-method limitation.
+Open ml/preprocessing.py and models/feature_schema.json.
 
-## 21:00–22:00 — Future work and close
-Scale to 500 patients and seven days, repeat across seeds, improve event simulator realism, add SHAP if deployment environment supports it, strengthen persistence/session support, and conduct domain-expert review before any clinical research use.
+Show forbidden latent/event fields and causal rolling windows.
+
+Explain why active-event periods are excluded from the early-warning classifier.
+
+## 4. Show the evaluation honestly
+
+Open the Evaluation workspace.
+
+Discuss:
+- ROC-AUC and patient-bootstrap CI
+- PR-AUC versus low prevalence
+- event detection
+- lead time
+- false-alert episodes per patient-day
+- ablations
+
+Point out that wearable-only ROC-AUC is currently higher than personalized fusion. Do not claim personalization always wins.
+
+## 5. Show out-of-seed behavior
+
+Show the three new synthetic cohorts and explain that this is a generator-seed stress test, not external validation.
+
+## 6. Run the live twin
+
+Select a patient and advance the clock.
+
+Show:
+- observed timeline
+- personal baselines
+- current forecast
+- observable-state estimate
+- state confidence
+- SHAP contribution view
+
+Explain that the live twin cannot access the hidden simulator state.
+
+## 7. Run a scenario
+
+Choose Recovery trajectory.
+
+Show the twelve future observations/probabilities. Explain that rolling features are recomputed at every future step and the original twin remains unchanged.
+
+Then compare with Sustained activity.
+
+## 8. Show retrospective separation
+
+Call or open the retrospective endpoint and point out that event truth is explicitly evaluation-only.
+
+## 9. Close with limitations
+
+Discuss synthetic physiology, alert burden, lack of clinical validation, absence of fairness/usability studies, and why the project should be treated as a research architecture rather than a medical product.

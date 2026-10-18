@@ -1,91 +1,272 @@
-patient_id,event_onset,event_end,baseline_hr,baseline_systolic_bp,hr_delta_threshold,sbp_delta_threshold,minimum_duration_minutes,baseline_reference_hours
-P0001,2026-01-01 21:35:00,2026-01-01 21:50:00,49.7,124.7,22.0,17.0,20,12.0
-P0002,2026-01-01 20:45:00,2026-01-01 21:10:00,55.4,109.0,22.0,17.0,20,12.0
-P0002,2026-01-02 16:40:00,2026-01-02 17:05:00,55.4,109.0,22.0,17.0,20,12.0
-P0003,2026-01-02 09:25:00,2026-01-02 09:50:00,53.3,120.7,22.0,17.0,20,12.0
-P0003,2026-01-02 17:20:00,2026-01-02 17:45:00,53.3,120.7,22.0,17.0,20,12.0
-P0004,2026-01-01 19:00:00,2026-01-01 19:25:00,48.2,112.2,22.0,17.0,20,12.0
-P0005,2026-01-02 14:30:00,2026-01-02 15:00:00,60.7,113.5,22.0,17.0,20,12.0
-P0006,2026-01-01 17:05:00,2026-01-01 17:35:00,71.3,135.9,22.0,17.0,20,12.0
-P0006,2026-01-02 05:15:00,2026-01-02 05:30:00,71.3,135.9,22.0,17.0,20,12.0
-P0008,2026-01-01 20:15:00,2026-01-01 20:35:00,66.0,114.5,22.0,17.0,20,12.0
-P0008,2026-01-02 06:00:00,2026-01-02 06:25:00,66.0,114.5,22.0,17.0,20,12.0
-P0009,2026-01-01 22:50:00,2026-01-01 23:15:00,70.6,124.6,22.0,17.0,20,12.0
-P0009,2026-01-02 11:30:00,2026-01-02 12:00:00,70.6,124.6,22.0,17.0,20,12.0
-P0010,2026-01-01 21:20:00,2026-01-01 21:45:00,73.65,104.7,22.0,17.0,20,12.0
-P0011,2026-01-01 15:05:00,2026-01-01 15:35:00,64.0,131.9,22.0,17.0,20,12.0
-P0011,2026-01-02 08:20:00,2026-01-02 08:45:00,64.0,131.9,22.0,17.0,20,12.0
-P0012,2026-01-01 14:40:00,2026-01-01 15:10:00,73.7,143.3,22.0,17.0,20,12.0
-P0012,2026-01-02 15:20:00,2026-01-02 15:45:00,73.7,143.3,22.0,17.0,20,12.0
-P0013,2026-01-02 15:30:00,2026-01-02 15:55:00,66.3,120.9,22.0,17.0,20,12.0
-P0013,2026-01-02 18:50:00,2026-01-02 19:05:00,66.3,120.9,22.0,17.0,20,12.0
-P0015,2026-01-01 15:15:00,2026-01-01 15:40:00,60.0,133.9,22.0,17.0,20,12.0
-P0015,2026-01-02 17:20:00,2026-01-02 17:40:00,60.0,133.9,22.0,17.0,20,12.0
-P0016,2026-01-01 14:10:00,2026-01-01 14:35:00,52.95,122.8,22.0,17.0,20,12.0
-P0016,2026-01-02 17:35:00,2026-01-02 18:05:00,52.95,122.8,22.0,17.0,20,12.0
-P0017,2026-01-01 15:55:00,2026-01-01 16:20:00,58.2,131.2,22.0,17.0,20,12.0
-P0017,2026-01-02 17:05:00,2026-01-02 17:25:00,58.2,131.2,22.0,17.0,20,12.0
-P0018,2026-01-02 06:50:00,2026-01-02 07:15:00,63.8,113.3,22.0,17.0,20,12.0
-P0018,2026-01-02 16:30:00,2026-01-02 16:55:00,63.8,113.3,22.0,17.0,20,12.0
-P0019,2026-01-02 20:10:00,2026-01-02 20:35:00,69.3,127.0,22.0,17.0,20,12.0
-P0020,2026-01-02 18:55:00,2026-01-02 19:20:00,75.3,135.8,22.0,17.0,20,12.0
-P0021,2026-01-02 00:45:00,2026-01-02 01:05:00,53.85,109.1,22.0,17.0,20,12.0
-P0021,2026-01-02 09:30:00,2026-01-02 09:50:00,53.85,109.1,22.0,17.0,20,12.0
-P0022,2026-01-02 13:55:00,2026-01-02 14:15:00,68.8,136.4,22.0,17.0,20,12.0
-P0023,2026-01-01 18:45:00,2026-01-01 19:10:00,57.2,124.7,22.0,17.0,20,12.0
-P0024,2026-01-01 16:25:00,2026-01-01 16:50:00,69.3,137.8,22.0,17.0,20,12.0
-P0024,2026-01-02 16:50:00,2026-01-02 17:15:00,69.3,137.8,22.0,17.0,20,12.0
-P0025,2026-01-01 19:45:00,2026-01-01 20:15:00,63.0,130.45,22.0,17.0,20,12.0
-P0026,2026-01-02 01:10:00,2026-01-02 01:30:00,52.15,136.1,22.0,17.0,20,12.0
-P0026,2026-01-02 14:00:00,2026-01-02 14:30:00,52.15,136.1,22.0,17.0,20,12.0
-P0027,2026-01-01 14:10:00,2026-01-01 14:35:00,71.7,128.2,22.0,17.0,20,12.0
-P0027,2026-01-01 21:05:00,2026-01-01 21:20:00,71.7,128.2,22.0,17.0,20,12.0
-P0028,2026-01-02 10:50:00,2026-01-02 11:15:00,60.8,141.7,22.0,17.0,20,12.0
-P0028,2026-01-02 16:00:00,2026-01-02 16:25:00,60.8,141.7,22.0,17.0,20,12.0
-P0029,2026-01-02 09:05:00,2026-01-02 09:35:00,60.4,115.5,22.0,17.0,20,12.0
-P0030,2026-01-01 18:35:00,2026-01-01 18:50:00,56.7,114.5,22.0,17.0,20,12.0
-P0031,2026-01-02 13:45:00,2026-01-02 14:10:00,59.5,99.6,22.0,17.0,20,12.0
-P0032,2026-01-02 11:20:00,2026-01-02 11:45:00,67.1,101.1,22.0,17.0,20,12.0
-P0032,2026-01-02 17:05:00,2026-01-02 17:30:00,67.1,101.1,22.0,17.0,20,12.0
-P0033,2026-01-01 20:25:00,2026-01-01 20:50:00,63.4,127.0,22.0,17.0,20,12.0
-P0034,2026-01-02 06:10:00,2026-01-02 06:35:00,65.75,124.4,22.0,17.0,20,12.0
-P0035,2026-01-02 00:10:00,2026-01-02 00:25:00,66.4,112.8,22.0,17.0,20,12.0
-P0035,2026-01-02 06:50:00,2026-01-02 07:15:00,66.4,112.8,22.0,17.0,20,12.0
-P0036,2026-01-02 07:25:00,2026-01-02 07:50:00,72.95,100.5,22.0,17.0,20,12.0
-P0036,2026-01-02 11:20:00,2026-01-02 11:45:00,72.95,100.5,22.0,17.0,20,12.0
-P0037,2026-01-01 21:05:00,2026-01-01 21:30:00,62.15,107.15,22.0,17.0,20,12.0
-P0037,2026-01-02 12:10:00,2026-01-02 12:25:00,62.15,107.15,22.0,17.0,20,12.0
-P0038,2026-01-01 19:20:00,2026-01-01 19:35:00,55.75,130.15,22.0,17.0,20,12.0
-P0038,2026-01-02 11:20:00,2026-01-02 11:45:00,55.75,130.15,22.0,17.0,20,12.0
-P0039,2026-01-01 21:50:00,2026-01-01 22:05:00,71.05,151.8,22.0,17.0,20,12.0
-P0039,2026-01-02 09:10:00,2026-01-02 09:25:00,71.05,151.8,22.0,17.0,20,12.0
-P0040,2026-01-02 10:00:00,2026-01-02 10:25:00,60.8,136.0,22.0,17.0,20,12.0
-P0040,2026-01-02 19:30:00,2026-01-02 19:55:00,60.8,136.0,22.0,17.0,20,12.0
-P0041,2026-01-01 20:25:00,2026-01-01 20:50:00,75.5,109.9,22.0,17.0,20,12.0
-P0041,2026-01-02 13:05:00,2026-01-02 13:30:00,75.5,109.9,22.0,17.0,20,12.0
-P0042,2026-01-01 15:15:00,2026-01-01 15:40:00,68.65,137.5,22.0,17.0,20,12.0
-P0042,2026-01-01 21:30:00,2026-01-01 21:45:00,68.65,137.5,22.0,17.0,20,12.0
-P0043,2026-01-01 19:45:00,2026-01-01 20:10:00,62.85,117.9,22.0,17.0,20,12.0
-P0044,2026-01-02 01:50:00,2026-01-02 02:15:00,67.3,112.85,22.0,17.0,20,12.0
-P0044,2026-01-02 19:25:00,2026-01-02 19:50:00,67.3,112.85,22.0,17.0,20,12.0
-P0045,2026-01-01 18:20:00,2026-01-01 18:45:00,77.2,115.3,22.0,17.0,20,12.0
-P0045,2026-01-02 08:35:00,2026-01-02 08:50:00,77.2,115.3,22.0,17.0,20,12.0
-P0046,2026-01-01 13:30:00,2026-01-01 13:55:00,81.95,134.4,22.0,17.0,20,12.0
-P0046,2026-01-02 15:30:00,2026-01-02 15:55:00,81.95,134.4,22.0,17.0,20,12.0
-P0047,2026-01-01 14:45:00,2026-01-01 15:15:00,64.3,123.85,22.0,17.0,20,12.0
-P0048,2026-01-02 01:55:00,2026-01-02 02:10:00,65.5,138.1,22.0,17.0,20,12.0
-P0049,2026-01-01 20:00:00,2026-01-01 20:25:00,72.75,123.2,22.0,17.0,20,12.0
-P0049,2026-01-02 07:05:00,2026-01-02 07:30:00,72.75,123.2,22.0,17.0,20,12.0
-P0050,2026-01-02 13:50:00,2026-01-02 14:20:00,60.2,127.3,22.0,17.0,20,12.0
-P0051,2026-01-01 15:35:00,2026-01-01 16:00:00,66.0,126.1,22.0,17.0,20,12.0
-P0052,2026-01-02 16:35:00,2026-01-02 17:00:00,64.2,128.7,22.0,17.0,20,12.0
-P0054,2026-01-01 15:10:00,2026-01-01 15:35:00,57.4,108.5,22.0,17.0,20,12.0
-P0055,2026-01-02 08:00:00,2026-01-02 08:25:00,52.65,128.5,22.0,17.0,20,12.0
-P0055,2026-01-02 15:05:00,2026-01-02 15:30:00,52.65,128.5,22.0,17.0,20,12.0
-P0056,2026-01-01 17:10:00,2026-01-01 17:45:00,51.05,112.25,22.0,17.0,20,12.0
-P0057,2026-01-01 18:50:00,2026-01-01 19:15:00,56.0,129.7,22.0,17.0,20,12.0
-P0058,2026-01-01 23:30:00,2026-01-01 23:50:00,60.5,125.0,22.0,17.0,20,12.0
-P0058,2026-01-02 03:50:00,2026-01-02 04:10:00,60.5,125.0,22.0,17.0,20,12.0
-P0059,2026-01-01 14:35:00,2026-01-01 15:00:00,63.9,131.45,22.0,17.0,20,12.0
-P0059,2026-01-01 18:50:00,2026-01-01 19:20:00,63.9,131.45,22.0,17.0,20,12.0
-P0060,2026-01-01 15:05:00,2026-01-01 15:20:00,77.7,119.35,22.0,17.0,20,12.0
+patient_id,event_onset,event_end,latent_onset_threshold,latent_end_threshold,minimum_onset_minutes,definition
+P0001,2026-01-01 15:30:00,2026-01-01 21:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0001,2026-01-02 06:15:00,2026-01-02 12:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0001,2026-01-02 14:20:00,2026-01-02 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0001,2026-01-03 16:20:00,2026-01-03 20:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0002,2026-01-01 14:35:00,2026-01-01 21:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0002,2026-01-03 06:00:00,2026-01-03 14:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0003,2026-01-01 18:15:00,2026-01-01 23:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0003,2026-01-02 05:50:00,2026-01-02 12:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0003,2026-01-02 14:45:00,2026-01-02 20:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0004,2026-01-01 16:05:00,2026-01-02 01:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0005,2026-01-02 19:15:00,2026-01-02 23:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0005,2026-01-03 04:00:00,2026-01-03 07:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0006,2026-01-02 10:30:00,2026-01-02 19:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0006,2026-01-03 08:20:00,2026-01-03 20:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0007,2026-01-01 13:45:00,2026-01-01 20:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0007,2026-01-02 10:55:00,2026-01-02 18:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0007,2026-01-02 22:45:00,2026-01-03 01:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0008,2026-01-02 17:05:00,2026-01-02 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0008,2026-01-03 07:10:00,2026-01-03 17:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0009,2026-01-02 13:20:00,2026-01-02 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0009,2026-01-03 01:25:00,2026-01-03 03:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0010,2026-01-01 16:00:00,2026-01-01 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0010,2026-01-02 06:50:00,2026-01-02 19:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0011,2026-01-01 14:05:00,2026-01-01 21:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0011,2026-01-02 15:40:00,2026-01-02 22:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0012,2026-01-01 18:45:00,2026-01-01 23:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0012,2026-01-03 05:55:00,2026-01-03 11:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0012,2026-01-03 14:10:00,2026-01-03 19:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0013,2026-01-01 19:35:00,2026-01-01 23:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0013,2026-01-02 13:50:00,2026-01-02 21:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0013,2026-01-03 05:40:00,2026-01-03 10:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0014,2026-01-02 15:15:00,2026-01-02 22:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0014,2026-01-03 08:50:00,2026-01-03 21:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0015,2026-01-02 07:45:00,2026-01-02 21:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0016,2026-01-01 13:25:00,2026-01-01 21:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0016,2026-01-02 10:40:00,2026-01-02 21:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0017,2026-01-01 13:45:00,2026-01-01 20:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0017,2026-01-02 13:35:00,2026-01-02 17:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0017,2026-01-03 11:25:00,2026-01-03 19:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0018,2026-01-01 16:15:00,2026-01-01 20:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0018,2026-01-02 18:50:00,2026-01-02 23:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0018,2026-01-03 11:25:00,2026-01-03 21:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0019,2026-01-02 01:35:00,2026-01-02 03:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0019,2026-01-02 14:50:00,2026-01-02 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0019,2026-01-03 09:10:00,2026-01-03 19:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0020,2026-01-02 16:40:00,2026-01-02 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0020,2026-01-03 09:45:00,2026-01-03 22:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0021,2026-01-03 04:25:00,2026-01-03 09:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0021,2026-01-03 11:15:00,2026-01-03 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0022,2026-01-01 14:50:00,2026-01-01 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0022,2026-01-03 07:05:00,2026-01-03 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0023,2026-01-01 20:15:00,2026-01-02 00:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0023,2026-01-02 02:40:00,2026-01-02 05:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0024,2026-01-02 08:50:00,2026-01-02 22:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0024,2026-01-03 12:40:00,2026-01-03 19:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0025,2026-01-01 13:45:00,2026-01-01 19:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0025,2026-01-02 07:55:00,2026-01-02 21:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0025,2026-01-03 07:05:00,2026-01-03 14:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0026,2026-01-01 19:35:00,2026-01-01 23:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0026,2026-01-02 16:30:00,2026-01-02 21:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0026,2026-01-03 18:35:00,2026-01-03 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0027,2026-01-02 06:30:00,2026-01-02 18:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0027,2026-01-03 13:35:00,2026-01-03 17:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0027,2026-01-03 19:20:00,2026-01-03 23:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0028,2026-01-02 00:30:00,2026-01-02 02:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0028,2026-01-02 15:15:00,2026-01-02 17:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0028,2026-01-03 10:40:00,2026-01-03 20:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0029,2026-01-01 23:00:00,2026-01-02 02:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0029,2026-01-02 12:20:00,2026-01-02 21:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0030,2026-01-02 15:45:00,2026-01-03 01:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0031,2026-01-01 16:15:00,2026-01-01 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0031,2026-01-02 02:55:00,2026-01-02 05:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0031,2026-01-02 10:10:00,2026-01-02 19:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0032,2026-01-02 16:40:00,2026-01-02 22:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0032,2026-01-03 03:55:00,2026-01-03 07:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0033,2026-01-01 21:55:00,2026-01-02 01:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0033,2026-01-03 03:30:00,2026-01-03 05:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0034,2026-01-02 01:25:00,2026-01-02 03:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0034,2026-01-02 07:10:00,2026-01-02 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0035,2026-01-01 18:55:00,2026-01-01 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0035,2026-01-03 15:10:00,2026-01-03 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0036,2026-01-01 17:25:00,2026-01-01 19:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0036,2026-01-02 02:10:00,2026-01-02 04:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0036,2026-01-03 10:50:00,2026-01-03 20:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0037,2026-01-03 03:30:00,2026-01-03 05:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0037,2026-01-03 15:20:00,2026-01-03 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0038,2026-01-02 09:20:00,2026-01-02 23:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0038,2026-01-03 14:05:00,2026-01-03 18:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0039,2026-01-02 04:00:00,2026-01-02 20:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0040,2026-01-02 14:10:00,2026-01-02 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0040,2026-01-03 15:30:00,2026-01-03 22:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0041,2026-01-01 18:10:00,2026-01-01 21:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0041,2026-01-02 04:10:00,2026-01-02 08:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0041,2026-01-02 22:10:00,2026-01-03 01:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0042,2026-01-01 12:30:00,2026-01-01 23:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0042,2026-01-02 00:45:00,2026-01-02 03:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0043,2026-01-02 10:50:00,2026-01-02 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0043,2026-01-03 12:50:00,2026-01-03 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0044,2026-01-01 14:15:00,2026-01-01 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0044,2026-01-02 22:20:00,2026-01-03 01:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0044,2026-01-03 16:05:00,2026-01-03 17:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0045,2026-01-01 16:15:00,2026-01-01 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0045,2026-01-03 03:40:00,2026-01-03 06:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0046,2026-01-01 17:20:00,2026-01-01 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0046,2026-01-02 15:05:00,2026-01-02 19:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0046,2026-01-03 11:20:00,2026-01-03 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0047,2026-01-01 21:15:00,2026-01-02 00:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0047,2026-01-02 15:15:00,2026-01-02 20:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0047,2026-01-03 01:50:00,2026-01-03 04:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0048,2026-01-01 19:50:00,2026-01-01 23:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0048,2026-01-02 06:35:00,2026-01-02 19:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0048,2026-01-03 16:10:00,2026-01-03 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0049,2026-01-01 15:35:00,2026-01-01 18:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0049,2026-01-02 05:20:00,2026-01-02 10:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0049,2026-01-02 16:40:00,2026-01-02 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0050,2026-01-01 14:35:00,2026-01-01 16:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0050,2026-01-01 18:35:00,2026-01-01 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0050,2026-01-02 06:00:00,2026-01-02 20:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0051,2026-01-02 04:30:00,2026-01-02 20:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0052,2026-01-01 21:15:00,2026-01-02 00:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0052,2026-01-02 16:50:00,2026-01-02 21:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0052,2026-01-03 17:20:00,2026-01-03 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0053,2026-01-02 14:20:00,2026-01-03 00:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0054,2026-01-01 16:55:00,2026-01-01 21:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0054,2026-01-01 22:40:00,2026-01-02 01:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0054,2026-01-02 18:15:00,2026-01-02 23:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0055,2026-01-02 01:10:00,2026-01-02 03:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0055,2026-01-03 07:55:00,2026-01-03 20:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0056,2026-01-02 18:30:00,2026-01-02 23:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0056,2026-01-03 11:35:00,2026-01-03 20:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0057,2026-01-01 22:55:00,2026-01-02 01:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0057,2026-01-03 09:05:00,2026-01-03 21:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0058,2026-01-02 01:30:00,2026-01-02 03:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0058,2026-01-02 07:00:00,2026-01-02 22:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0059,2026-01-01 22:50:00,2026-01-02 01:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0059,2026-01-03 06:30:00,2026-01-03 20:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0060,2026-01-01 16:55:00,2026-01-01 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0060,2026-01-02 12:40:00,2026-01-02 21:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0060,2026-01-03 19:05:00,2026-01-03 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0061,2026-01-02 10:40:00,2026-01-02 20:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0061,2026-01-03 05:05:00,2026-01-03 19:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0062,2026-01-02 14:55:00,2026-01-02 21:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0062,2026-01-03 10:40:00,2026-01-03 20:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0063,2026-01-02 07:30:00,2026-01-02 18:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0063,2026-01-03 06:15:00,2026-01-03 20:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0064,2026-01-02 12:55:00,2026-01-02 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0064,2026-01-03 02:45:00,2026-01-03 05:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0064,2026-01-03 16:30:00,2026-01-03 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0065,2026-01-01 17:15:00,2026-01-01 23:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0065,2026-01-02 16:50:00,2026-01-02 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0066,2026-01-02 09:20:00,2026-01-02 21:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0067,2026-01-01 18:55:00,2026-01-01 20:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0067,2026-01-02 13:40:00,2026-01-02 23:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0068,2026-01-01 14:30:00,2026-01-01 22:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0068,2026-01-03 08:55:00,2026-01-03 18:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0069,2026-01-01 18:35:00,2026-01-01 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0069,2026-01-03 13:45:00,2026-01-03 20:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0070,2026-01-02 16:05:00,2026-01-02 22:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0070,2026-01-03 06:10:00,2026-01-03 11:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0070,2026-01-03 17:25:00,2026-01-03 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0071,2026-01-01 14:20:00,2026-01-01 22:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0071,2026-01-02 17:15:00,2026-01-02 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0072,2026-01-01 22:10:00,2026-01-02 01:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0072,2026-01-03 13:05:00,2026-01-03 20:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0073,2026-01-01 14:25:00,2026-01-01 21:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0073,2026-01-03 10:20:00,2026-01-03 21:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0074,2026-01-02 20:35:00,2026-01-03 00:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0074,2026-01-03 15:55:00,2026-01-03 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0075,2026-01-01 21:05:00,2026-01-02 00:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0075,2026-01-02 17:40:00,2026-01-02 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0075,2026-01-03 10:40:00,2026-01-03 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0076,2026-01-02 12:00:00,2026-01-02 22:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0076,2026-01-03 16:40:00,2026-01-03 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0077,2026-01-01 15:40:00,2026-01-01 20:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0077,2026-01-02 22:15:00,2026-01-03 01:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0077,2026-01-03 16:40:00,2026-01-03 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0078,2026-01-01 14:25:00,2026-01-01 20:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0078,2026-01-02 13:40:00,2026-01-02 20:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0078,2026-01-03 11:30:00,2026-01-03 20:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0079,2026-01-02 09:15:00,2026-01-02 20:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0079,2026-01-03 08:50:00,2026-01-03 19:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0080,2026-01-02 02:10:00,2026-01-02 04:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0080,2026-01-02 15:00:00,2026-01-02 18:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0080,2026-01-02 20:25:00,2026-01-02 23:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0081,2026-01-01 19:45:00,2026-01-01 23:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0081,2026-01-02 13:30:00,2026-01-02 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0082,2026-01-03 03:15:00,2026-01-03 05:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0082,2026-01-03 14:00:00,2026-01-03 20:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0083,2026-01-01 15:55:00,2026-01-01 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0083,2026-01-03 07:30:00,2026-01-03 21:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0084,2026-01-01 14:55:00,2026-01-01 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0084,2026-01-02 09:00:00,2026-01-02 17:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0084,2026-01-03 06:15:00,2026-01-03 19:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0085,2026-01-02 21:10:00,2026-01-03 00:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0085,2026-01-03 09:05:00,2026-01-03 18:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0086,2026-01-01 15:00:00,2026-01-01 22:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0086,2026-01-02 06:40:00,2026-01-02 20:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0087,2026-01-01 18:40:00,2026-01-01 23:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0087,2026-01-03 16:35:00,2026-01-03 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0088,2026-01-01 16:20:00,2026-01-01 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0088,2026-01-02 13:35:00,2026-01-02 20:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0089,2026-01-02 17:25:00,2026-01-02 23:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0089,2026-01-03 09:30:00,2026-01-03 18:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0090,2026-01-02 14:25:00,2026-01-02 20:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0090,2026-01-03 02:25:00,2026-01-03 04:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0090,2026-01-03 16:50:00,2026-01-03 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0091,2026-01-02 20:30:00,2026-01-03 00:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0091,2026-01-03 16:05:00,2026-01-03 23:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0092,2026-01-02 15:10:00,2026-01-02 21:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0092,2026-01-03 08:20:00,2026-01-03 18:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0093,2026-01-02 01:25:00,2026-01-02 03:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0093,2026-01-02 13:20:00,2026-01-02 19:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0093,2026-01-03 12:40:00,2026-01-03 21:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0094,2026-01-02 16:40:00,2026-01-02 20:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0094,2026-01-03 07:15:00,2026-01-03 23:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0095,2026-01-01 16:15:00,2026-01-01 19:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0095,2026-01-02 12:20:00,2026-01-02 19:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0095,2026-01-03 15:35:00,2026-01-03 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0096,2026-01-03 12:15:00,2026-01-03 23:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0097,2026-01-02 01:05:00,2026-01-02 03:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0097,2026-01-03 16:15:00,2026-01-03 22:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0098,2026-01-01 18:05:00,2026-01-01 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0098,2026-01-02 00:35:00,2026-01-02 02:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0098,2026-01-02 23:50:00,2026-01-03 02:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0099,2026-01-01 18:00:00,2026-01-01 23:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0099,2026-01-03 19:30:00,2026-01-03 23:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0100,2026-01-02 02:05:00,2026-01-02 04:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0100,2026-01-03 12:25:00,2026-01-03 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0101,2026-01-01 20:10:00,2026-01-01 23:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0101,2026-01-03 13:40:00,2026-01-03 20:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0102,2026-01-02 20:55:00,2026-01-03 00:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0102,2026-01-03 12:35:00,2026-01-03 21:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0103,2026-01-02 17:50:00,2026-01-02 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0103,2026-01-02 22:25:00,2026-01-03 01:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0103,2026-01-03 16:45:00,2026-01-03 23:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0104,2026-01-02 11:05:00,2026-01-02 18:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0104,2026-01-02 22:40:00,2026-01-03 01:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0105,2026-01-01 16:40:00,2026-01-01 23:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0105,2026-01-03 14:05:00,2026-01-03 21:25:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0106,2026-01-02 09:55:00,2026-01-02 19:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0106,2026-01-03 12:15:00,2026-01-03 22:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0107,2026-01-02 07:50:00,2026-01-02 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0107,2026-01-03 13:25:00,2026-01-03 20:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0108,2026-01-03 04:10:00,2026-01-03 07:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0108,2026-01-03 14:15:00,2026-01-03 22:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0109,2026-01-01 15:55:00,2026-01-01 22:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0109,2026-01-03 13:40:00,2026-01-03 21:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0110,2026-01-02 10:55:00,2026-01-02 17:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0110,2026-01-03 06:55:00,2026-01-03 17:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0111,2026-01-01 20:50:00,2026-01-02 00:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0111,2026-01-02 12:40:00,2026-01-02 19:00:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0111,2026-01-02 20:00:00,2026-01-02 23:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0112,2026-01-01 16:25:00,2026-01-01 19:55:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0112,2026-01-02 03:40:00,2026-01-02 06:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0112,2026-01-02 09:00:00,2026-01-02 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0112,2026-01-03 16:25:00,2026-01-03 22:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0113,2026-01-02 01:45:00,2026-01-02 04:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0113,2026-01-03 02:45:00,2026-01-03 05:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0114,2026-01-01 20:00:00,2026-01-01 23:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0114,2026-01-03 09:05:00,2026-01-03 20:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0115,2026-01-02 03:35:00,2026-01-02 06:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0115,2026-01-03 19:20:00,2026-01-03 23:35:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0116,2026-01-02 12:25:00,2026-01-02 23:40:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0117,2026-01-03 12:15:00,2026-01-03 23:05:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0118,2026-01-01 16:15:00,2026-01-01 22:45:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0118,2026-01-02 08:05:00,2026-01-02 18:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0118,2026-01-03 15:30:00,2026-01-03 18:10:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0119,2026-01-01 23:40:00,2026-01-02 02:20:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0119,2026-01-03 10:30:00,2026-01-03 19:50:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0120,2026-01-02 00:05:00,2026-01-02 02:30:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP
+P0120,2026-01-03 00:50:00,2026-01-03 03:15:00,0.72,0.48,20,hidden latent deterioration state crossing; not defined from observed HR/BP

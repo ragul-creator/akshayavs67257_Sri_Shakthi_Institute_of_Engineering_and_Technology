@@ -1,128 +1,253 @@
-﻿# CardioTwin
-## Personalized Cardiovascular Digital Twin for Proactive Healthcare
+# CardioTwin
 
-**Tagline:** Understand the present. Anticipate the next. Explore what could change.
+A synthetic cardiovascular digital-twin research prototype for short-horizon deterioration forecasting.
 
-CardioTwin is an end-to-end educational research prototype that combines deterministic synthetic EHR profiles, simulated wearable-style time series, a calibrated machine-learning forecast, an evolving patient digital twin, explainability, and isolated what-if scenarios.
+CardioTwin is not a clinical product. It does not diagnose cardiovascular disease, predict real heart attacks, recommend treatment, or estimate treatment effects.
 
-> **Synthetic data only. Not clinically validated. Not a diagnosis, emergency prediction, treatment recommendation, or replacement for a clinician.**
+## What changed in this version
 
-## 1. Problem
-Clinical measurements are often snapshots. CardioTwin demonstrates how static history, recent physiology, and personal baselines can be combined into a continuously updated virtual state. The prototype forecasts one narrow simulator-defined event: whether a sustained HR/BP deterioration pattern begins within the next 60 minutes.
+The simulator and twin were rebuilt to remove the most artificial part of the earlier prototype.
 
-## 2. What makes it a digital twin
-Each selected synthetic patient has a persistent profile, replay position, recent observations, personal baselines, rolling features, calibrated forecast, data-quality status, explanation, forecast history, and scenario history. The deterministic replay clock advances by recorded five-minute observations. Scenario execution copies the current state before applying hypothetical changes.
+The previous design injected abnormal HR/BP patterns and then defined the target from HR/BP thresholds. That made the prediction problem partly circular. The current design instead has two separate layers:
 
-## 3. Current pilot dataset
-The checked-in/reproducible pilot uses:
-- 60 synthetic patients.
-- 2 simulated days per patient.
-- 5-minute cadence.
-- 34,560 observations.
-- Fixed seeds (42 for profiles, 43 for time series).
-- Simulated HR, HRV, systolic/diastolic BP, steps, activity, sleep, quality, and missingness.
+1. Hidden physiological simulation state: stress, autonomic instability, hemodynamic load, recovery debt, and a latent deterioration state evolve through time.
+2. Observable measurements: HR, HRV, BP, activity, steps, sleep, missingness, and sensor quality are noisy emissions from that hidden process.
 
-Five-minute BP values are an explicit simulator assumption; they are not represented as typical consumer-wearable measurements.
+The event label is generated only from the hidden deterioration state. The ML pipeline never receives latent-state variables. That separation is enforced in code and tests.
 
-A separate generator supports the larger target:
+## Research question
+
+Given a synthetic patient's static profile and measurements available up to the current replay time, estimate the calibrated probability that a simulator-defined hidden deterioration event will begin within the next 60 minutes.
+
+## Event process
+
+data_generation/physiology.py evolves an unobserved state vector for each patient:
+
+- latent stress
+- latent autonomic instability
+- latent hemodynamic load
+- latent recovery debt
+- latent deterioration
+- an unobserved external perturbation
+
+data_generation/generate_events.py defines onset from the hidden deterioration trajectory:
+
+- onset threshold: latent deterioration >= 0.72
+- required duration: 4 consecutive five-minute steps
+- event ends after the state falls below 0.48 for 3 consecutive steps
+- the supervised target is positive during the 60 minutes before onset
+
+Observed HR or BP thresholds do not define the event.
+
+Active-event rows are excluded from classifier training/evaluation because once onset has occurred they are not legitimate negative examples for an early-warning task.
+
+## Pilot data
+
+The reproducible pilot uses:
+
+- 120 synthetic patients
+- 3 simulated days per patient
+- 103,680 five-minute observations
+- 271 hidden-state deterioration events
+- roughly 3% positive pre-onset windows
+
+The hidden latent trajectory is written locally to data/sample_latent.csv for generator validation, but that file is ignored by Git and is never loaded by the model or live twin engine.
+
+A larger cohort can be generated with:
 
     .\.venv\Scripts\python data_generation\generate_full.py --patients 500 --days 7 --seed 4200
 
-Large full-data CSVs are ignored by Git.
+## Observable feature pipeline
 
-## 4. Event definition
-For each patient, reference HR and systolic BP are medians over the first 12 simulated hours. A synthetic event is a contiguous run lasting at least 20 minutes (four five-minute observations) where:
-- HR >= reference HR + 22 bpm, and
-- systolic BP >= reference systolic BP + 17 mmHg.
+Features are causal: only current and preceding observations are used.
 
-The event begins at the first qualifying observation and ends at the last consecutive qualifying observation. Injected episodes are spaced apart; contiguous qualifying observations are one event. The prediction target is 1 for non-event observations in the 60 minutes before onset.
+Static:
+- age
+- BMI
+- hypertension history
+- diabetes status
+- smoking history
 
-This rule is defined in data_generation/generate_events.py. Event logs, hidden simulator flags, event-active flags, and future observations are not model features.
+Dynamic:
+- current HR, HRV, BP, pulse pressure
+- 15- and 60-minute means
+- 15- and 30-minute slopes
+- 60-minute variability
+- recent steps/activity/sleep
+- sensor quality
+- missing-data proportion
+- time since a valid measurement
+- time of day
 
-## 5. Feature engineering
-Static features include age, BMI, hypertension history, diabetes status, and encoded smoking history. Dynamic features include recent means/variation, HR change, BP trends, activity, sleep, quality, missingness, and time-of-day. Personalized features include HR/BP deviations and HR relative to the patient baseline.
+Personalized:
+- HR and BP deviation from generated profile baselines
+- relative HR
+- normalized baseline-deviation units
 
-Rolling windows use only current and previous observations. Missing sensor values are forward-filled within patient or replaced by declared static baselines; backward-fill is not used.
+The schema explicitly rejects latent variables, event fields, and future labels.
 
-## 6. ML workflow
-Patients are split before modeling into approximately 70% training, 15% validation, and 15% test groups. No patient appears across splits.
+## Model
 
-Models:
-1. Logistic physiological baseline.
-2. EHR-only gradient boosting.
-3. Wearable-only gradient boosting.
-4. EHR + wearable fusion.
-5. EHR + wearable + personal-baseline fusion (selected model).
+The primary model is a HistGradientBoostingClassifier with class-balanced training. Platt probability calibration is fitted only on validation patients. The prototype alert threshold is selected only on validation patients.
 
-The selected GradientBoostingClassifier is probability-calibrated with Platt scaling on validation patients. The prototype alert threshold is chosen by validation-set F1. Final metrics are computed only on held-out test patients.
+The split is approximately 70/15/15 by patient. No patient is shared between train, validation, and test.
 
-## 7. Reproducible current evaluation
-The current seed/configuration produces these held-out values for the calibrated personalized model:
-- ROC-AUC: about 0.833.
-- PR-AUC: about 0.339.
-- F1: about 0.362.
-- Precision: about 0.587.
-- Recall: about 0.262.
-- Brier score: about 0.026.
-- Event detection rate in the test replay: 1.00 across 14 generated test events.
-- Mean warning lead time among detected events: about 26.1 simulated minutes.
-- False alerts: about 1.72 per simulated patient-day.
+A logistic-regression physiological baseline is also trained.
 
-These are synthetic benchmark results, not evidence of clinical performance. The authoritative machine-readable values are in reports/evaluation_results.json and are regenerated by ml/train.py and ml/robustness.py.
+## Current held-out results
 
-Robustness checks currently include added sensor noise and simulated loss of 15% of current readings. Calibration-bin data is also saved for dashboard/report use.
+These are synthetic benchmark results, not clinical evidence.
 
-## 8. Explainability
-The API returns per-forecast contributing features with readable labels and current values. When SHAP is available, TreeExplainer is used against the underlying gradient-boosting model. Otherwise the code falls back to a clearly labeled non-causal influence proxy. Neither is medical evidence or a causal explanation.
+Selected personalized model on held-out patients:
 
-## 9. What-if simulation
-Two working presets are included:
-- return_toward_baseline
-- increased_activity
+- ROC-AUC: 0.676
+- patient-bootstrap 95% CI: 0.630-0.723
+- PR-AUC: 0.088
+- F1: 0.132
+- precision: 0.134
+- recall: 0.130
+- Brier score: 0.038
+- 13 / 41 test events detected at the selected threshold
+- median early-warning lead time among detected events: 30 minutes
+- false-alert burden: 2.87 distinct false-alert episodes per simulated patient-day
 
-The original twin state is copied and not mutated. The same inference pipeline is used on the hypothetical state. Scenario results are explicitly marked hypothetical and are not treatment-effect estimates.
+The result is deliberately not optimized to look impressive.
 
-## 10. Backend and storage
-FastAPI provides:
+### Ablation result
+
+Current held-out ROC-AUC:
+
+- EHR only: 0.484
+- wearable only: 0.697
+- EHR + wearable: 0.664
+- personalized fusion: 0.676
+
+Personalization does not dominate every ablation on this seed. It slightly improves PR-AUC relative to wearable-only but has lower ROC-AUC. That is reported as a result, not hidden.
+
+## Out-of-seed synthetic stress test
+
+The saved model is evaluated without refitting on three newly generated cohorts using different patient and physiology seeds.
+
+Across those cohorts:
+
+- mean ROC-AUC: 0.748 +/- 0.010
+- mean PR-AUC: 0.163 +/- 0.035
+- mean F1: 0.222 +/- 0.040
+- mean event detection: 0.600 +/- 0.057
+- mean false-alert burden: 3.27 +/- 0.18 episodes/patient-day
+
+This checks sensitivity to generator seeds. It is not external validation.
+
+## Measurement robustness
+
+On the held-out cohort, controlled sensor noise and simulated loss of 15% of current readings did not materially change ranking performance in the current run. Results are saved in reports/evaluation_results.json.
+
+This robustness test is narrow and does not establish real-device robustness.
+
+## Digital twin state
+
+The live twin does not expose the simulator's hidden state.
+
+twin_engine/estimator.py produces an estimated observable state from trailing measurements:
+
+- cardiovascular load
+- autonomic instability
+- recovery debt
+- trajectory instability
+- composite physiological strain
+- confidence / uncertainty based on data quality and freshness
+
+This is an interpretable filtering layer, not a claim that the true latent physiology has been recovered.
+
+## Replay semantics
+
+At each deterministic replay step the engine:
+
+1. advances the patient clock
+2. updates the observable state
+3. uses causal rolling features
+4. runs the saved calibrated model
+5. computes a fresh SHAP explanation
+6. records forecast history
+7. stores an audit record in local SQLite
+
+Retrospective event truth is available through a separate endpoint and is explicitly labeled evaluation-only.
+
+## Explainability
+
+SHAP TreeExplainer is run on the underlying gradient-boosting model.
+
+The UI describes SHAP values as model-score contributions. They are not causal effects and they do not explain the subsequent calibration mapping.
+
+## Scenario engine
+
+Scenarios no longer edit ML features directly.
+
+For each scenario, the engine:
+
+1. copies recent observable history
+2. generates twelve hypothetical future observations at five-minute intervals
+3. applies explicit observation-space trajectory assumptions
+4. recomputes all rolling features causally at each step
+5. runs the same saved model for each future step
+6. returns the full 60-minute probability trajectory
+
+Current scenarios:
+
+- recovery
+- sustained_activity
+
+These are phenomenological simulations, not treatment-effect models.
+
+## Frontend
+
+The React application is organized around analysis rather than KPI cards.
+
+The Twin workspace contains:
+
+- patient profile and baselines
+- deterministic replay controls
+- observed physiology timeline
+- current calibrated forecast
+- observable-state estimate and confidence
+- SHAP contribution view
+- 60-minute trajectory laboratory
+
+The Evaluation workspace contains:
+
+- held-out metrics with patient-bootstrap intervals
+- ablation results
+- alert operating curve
+- measurement robustness
+- out-of-seed synthetic stress-test results
+
+## API
+
+FastAPI routes include:
+
 - GET /health
 - GET /patients
-- GET /patients/{patient_id}
-- GET /patients/{patient_id}/observations
-- GET /patients/{patient_id}/twin
-- GET /patients/{patient_id}/forecast
-- GET /patients/{patient_id}/history
+- GET /patients/{id}
+- GET /patients/{id}/observations
+- GET /patients/{id}/twin
+- GET /patients/{id}/forecast
+- GET /patients/{id}/history
+- GET /patients/{id}/retrospective
 - POST /simulation/start
 - POST /simulation/step
 - POST /simulation/reset
-- POST /patients/{patient_id}/scenarios
+- POST /patients/{id}/scenarios
 - GET /evaluation
 
-SQLite stores prediction and scenario audit records at data/cardiotwin.db. The database is local/generated and ignored by Git.
+## Run
 
-## 11. Frontend
-The React/Vite/Recharts dashboard includes patient selection, latest measurements, personal baselines, physiology trends, calibrated 60-minute forecast, data quality, explanations, scenario comparison, evaluation metrics, and the ablation table. It uses actual FastAPI responses.
-
-## 12. Repository layout
-- data_generation/ â€” deterministic generators, event rules, validation.
-- ml/ â€” preprocessing, models, calibration, evaluation, robustness, explanation.
-- twin_engine/ â€” state manager, deterministic simulator, scenario functions.
-- backend/ â€” FastAPI app, routes, schemas, SQLite store.
-- frontend/ â€” React dashboard.
-- models/ â€” saved trusted local model/schema/metadata.
-- reports/ â€” generated evaluation and data-generation reports.
-- tests/ â€” reproducibility, splitting, scenario isolation, and API cycle tests.
-- docs/ â€” architecture, API contract, model card, and demo-video outline.
-- scripts/ â€” smoke test.
-
-## 13. Install and run
 PowerShell:
 
     cd C:\Users\ragul\Desktop\CardioTwin
-    python -m venv .venv
-    .\.venv\Scripts\python -m pip install -r requirements.txt
     .\.venv\Scripts\python data_generation\build_sample.py
     .\.venv\Scripts\python -m ml.train
     .\.venv\Scripts\python -m ml.robustness
+    .\.venv\Scripts\python -m ml.evaluate_multiseed
     .\.venv\Scripts\python -m pytest -q
     .\.venv\Scripts\python scripts\smoke_test.py
     .\.venv\Scripts\python -m uvicorn backend.main:app --reload
@@ -133,27 +258,75 @@ Second terminal:
     npm install
     npm run dev
 
-Open http://localhost:5173. FastAPI docs are available at http://127.0.0.1:8000/docs.
+Dashboard: http://127.0.0.1:5173
 
-## 14. Verified build state
-At the time of this implementation:
-- Synthetic generation executed successfully.
-- Model training, calibration, ablation evaluation, and robustness evaluation executed successfully.
-- 8 Python tests passed.
-- Vite production build completed successfully.
-- Live API health/patient/step/scenario requests returned successfully.
-- Live Vite page returned HTTP 200.
+API docs: http://127.0.0.1:8000/docs
 
-## 15. Limitations
-The pilot is smaller than the intended 500-patient/seven-day target. Synthetic generators can create learnable shortcuts. Real clinical prevalence, physiology, sensor behavior, fairness, calibration, prospective performance, privacy compliance, and workflow safety have not been established. Local SQLite persistence is suitable for a demo, not production healthcare infrastructure.
+## Repository structure
 
-## 16. Team and submission placeholders
-- Team members: [ADD TEAM NAMES]
-- College/organization: [ADD ORGANIZATION]
-- Repository URL: [ADD REPOSITORY URL]
-- Demonstration video: [ADD VIDEO URL]
-- Submission URL: [ADD CHALLENGE SUBMISSION URL]
+    data_generation/
+      physiology.py
+      generate_patients.py
+      generate_wearables.py
+      generate_events.py
+      build_sample.py
+      generate_full.py
 
-## 17. License
-MIT License. See LICENSE.
+    ml/
+      preprocessing.py
+      calibration.py
+      train.py
+      robustness.py
+      evaluate_multiseed.py
+      explain.py
 
+    twin_engine/
+      estimator.py
+      simulator.py
+      scenarios.py
+      state_manager.py
+
+    backend/
+      main.py
+      routes.py
+      schemas.py
+      database.py
+
+    frontend/src/
+      components/
+      services/
+      App.jsx
+
+    models/
+    reports/
+    tests/
+    docs/
+
+## Known limitations
+
+This is still a synthetic-data project.
+
+Important unresolved limitations:
+
+- the physiology equations are phenomenological, not validated cardiovascular models
+- the external perturbation process is hand-designed
+- all patients eventually experience synthetic deterioration in the current pilot
+- feature/model choices have not been exhaustively tuned
+- calibration is evaluated only within synthetic distributions
+- alert burden remains high for a real clinical workflow
+- no fairness analysis has been completed
+- no real sensor data has been used
+- no clinician usability study has been performed
+- local SQLite and in-memory replay state are demo infrastructure, not production healthcare architecture
+
+Those limitations are part of the project, not footnotes to hide.
+
+## Tests
+
+Automated tests cover deterministic generation, latent/observable stream separation, event construction, patient-level split isolation, leakage protection, state-estimator separation, scenario trajectory isolation, replay reset, API prediction, retrospective labeling, and invalid patient behavior.
+
+## Responsible use
+
+CardioTwin is for educational/research demonstration on synthetic data only.
+
+Do not use it for diagnosis, emergency triage, medication decisions, treatment selection, or real-patient risk prediction.

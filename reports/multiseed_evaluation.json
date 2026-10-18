@@ -1,0 +1,142 @@
+{
+  "description": "Out-of-seed synthetic stress test; not external clinical validation.",
+  "model_version": "cardiotwin-hgb-latent-sim-0.3.0",
+  "cohorts": [
+    {
+      "patient_seed": 5101,
+      "physiology_seed": 101,
+      "patients": 50,
+      "rows": 28800,
+      "events": 69,
+      "eligible_positive_rate": 0.03574055644498291,
+      "row_metrics": {
+        "precision": 0.2094240837696335,
+        "recall": 0.1937046004842615,
+        "f1": 0.20125786163522014,
+        "roc_auc": 0.7583350400735357,
+        "pr_auc": 0.1369003219404509,
+        "brier": 0.032780284991429216,
+        "confusion_matrix": [
+          [
+            21681,
+            604
+          ],
+          [
+            666,
+            160
+          ]
+        ]
+      },
+      "event_metrics": {
+        "event_detection_rate": 0.5362318840579711,
+        "detected_events": 37,
+        "test_events": 69,
+        "mean_early_warning_minutes": 31.216216216216218,
+        "median_early_warning_minutes": 25.0,
+        "false_alerts_per_patient_day": 3.15
+      }
+    },
+    {
+      "patient_seed": 5202,
+      "physiology_seed": 202,
+      "patients": 50,
+      "rows": 28800,
+      "events": 84,
+      "eligible_positive_rate": 0.0445113048095217,
+      "row_metrics": {
+        "precision": 0.2762605042016807,
+        "recall": 0.2614314115308151,
+        "f1": 0.2686414708886619,
+        "roc_auc": 0.7379890142819858,
+        "pr_auc": 0.20298131743563777,
+        "brier": 0.03965007908182363,
+        "confusion_matrix": [
+          [
+            20906,
+            689
+          ],
+          [
+            743,
+            263
+          ]
+        ]
+      },
+      "event_metrics": {
+        "event_detection_rate": 0.6190476190476191,
+        "detected_events": 52,
+        "test_events": 84,
+        "mean_early_warning_minutes": 36.34615384615385,
+        "median_early_warning_minutes": 35.0,
+        "false_alerts_per_patient_day": 3.18
+      }
+    },
+    {
+      "patient_seed": 5303,
+      "physiology_seed": 303,
+      "patients": 50,
+      "rows": 28800,
+      "events": 79,
+      "eligible_positive_rate": 0.041749415243391146,
+      "row_metrics": {
+        "precision": 0.1950207468879668,
+        "recall": 0.19873150105708245,
+        "f1": 0.1968586387434555,
+        "roc_auc": 0.7472041330254019,
+        "pr_auc": 0.15011261360971195,
+        "brier": 0.03801019459894647,
+        "confusion_matrix": [
+          [
+            20937,
+            776
+          ],
+          [
+            758,
+            188
+          ]
+        ]
+      },
+      "event_metrics": {
+        "event_detection_rate": 0.6455696202531646,
+        "detected_events": 51,
+        "test_events": 79,
+        "mean_early_warning_minutes": 31.666666666666668,
+        "median_early_warning_minutes": 30.0,
+        "false_alerts_per_patient_day": 3.47
+      }
+    }
+  ],
+  "summary": {
+    "roc_auc": {
+      "mean": 0.7478427291269744,
+      "std": 0.010188034408722367
+    },
+    "pr_auc": {
+      "mean": 0.16333141766193354,
+      "std": 0.03496751459336221
+    },
+    "f1": {
+      "mean": 0.2222526570891125,
+      "std": 0.04023406299157227
+    },
+    "precision": {
+      "mean": 0.226901778286427,
+      "std": 0.0433483205708658
+    },
+    "recall": {
+      "mean": 0.2179558376907197,
+      "std": 0.03773475285312532
+    },
+    "brier": {
+      "mean": 0.036813519557399775,
+      "std": 0.0035878323647294467
+    },
+    "event_detection_rate": {
+      "mean": 0.6002830411195849,
+      "std": 0.05703303584489766
+    },
+    "false_alerts_per_patient_day": {
+      "mean": 3.266666666666667,
+      "std": 0.1767295485574876
+    }
+  }
+}

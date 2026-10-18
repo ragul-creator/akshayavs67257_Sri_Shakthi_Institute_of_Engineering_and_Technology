@@ -1,57 +1,119 @@
 # CardioTwin architecture
 
+## Separation of concerns
+
+CardioTwin now separates simulation truth, observable data, inference, twin state, and retrospective evaluation.
+
+### 1. Hidden physiology simulator
+
+data_generation/physiology.py evolves internal state variables that are not model inputs:
+
+- stress
+- autonomic instability
+- hemodynamic load
+- recovery debt
+- deterioration state
+- external perturbation
+
+These variables are used only to produce synthetic observations and reference event truth.
+
+### 2. Observation emission
+
+The simulator emits noisy HR, HRV, systolic BP, diastolic BP, steps, activity, sleep, quality, and missingness.
+
+The observation stream is the only physiological time-series input available to feature engineering and the live twin.
+
+### 3. Event generation
+
+data_generation/generate_events.py reads the hidden deterioration trajectory.
+
+An event begins when latent deterioration remains at or above 0.72 for four consecutive five-minute steps. It ends after three consecutive steps below 0.48.
+
+The 60-minute target is assigned before onset. Observed HR/BP values do not define the event.
+
+### 4. Causal feature engineering
+
+ml/preprocessing.py uses only static profile data and observations up to the current timestamp.
+
+Features include short- and medium-window means, slopes, variability, activity, quality, freshness, and deviations from personal baselines.
+
+The feature schema explicitly forbids latent state and event fields.
+
+### 5. Model training
+
+Patients are split before fitting.
+
+Training:
+- HistGradientBoostingClassifier
+- class-balanced fitting
+- active event periods excluded
+
+Validation:
+- Platt calibration
+- alert threshold selection
+
+Test:
+- row metrics
+- event detection and lead time
+- false-alert episodes/patient-day
+- patient-bootstrap confidence intervals
+- ablation study
+
+### 6. Digital twin
+
+The digital twin does not read hidden physiology.
+
+It combines:
+- static profile
+- replay clock
+- current observed measurements
+- causal features
+- observable-state estimate
+- calibrated forecast
+- data-quality state
+- SHAP contribution view
+- forecast history
+- scenario history
+
+twin_engine/estimator.py provides an interpretable measurement-derived state estimate. This estimate is not the hidden simulator state.
+
+### 7. Scenario engine
+
+A scenario operates on a copy of recent observable history.
+
+It generates twelve hypothetical five-minute observations, recomputes the entire feature pipeline after every generated point, and sends those features through the same saved model.
+
+The original twin is not mutated.
+
+### 8. Retrospective boundary
+
+Live endpoints do not expose future event truth.
+
+A separate retrospective endpoint exposes past/current event labels strictly for evaluation and debugging and is explicitly marked retrospective_evaluation_only.
+
 ## Data flow
 
-    Synthetic EHR generator
-             |
-             v
-    Patient profiles -----------+
-                                |
-    Wearable simulator          |
-             |                  |
-             v                  v
-    Rule-based event module -> leakage-safe feature engineering
-                                |
-                   +------------+-------------+
-                   |                          |
-             Baseline model          Fusion + personalization
-                                              |
-                                   validation calibration
-                                              |
-                              held-out patient evaluation
-                                              |
-                                  saved inference model
-                                              |
-    prerecorded observations -> deterministic replay clock
-                                              |
-                                      digital twin state
-                                      /      |        \
-                               forecast  explanation  scenario copy
-                                      \      |        /
-                                           FastAPI
-                                             |
-                                  SQLite audit persistence
-                                             |
-                                  React / Recharts dashboard
+    hidden physiology state
+              |
+              v
+       observation emitter
+              |
+              v
+       wearable-like stream ---------> retrospective event truth
+              |                                |
+              v                                |
+       causal feature pipeline                 |
+              |                                |
+              v                                |
+        calibrated model                       |
+              |                                |
+              v                                |
+       observable twin state                   |
+          /       |        \                   |
+     forecast   SHAP      scenarios            |
+          \       |        /                   |
+              FastAPI                          |
+                 |                             |
+              React UI <---------------- evaluation workspace
 
-## Component responsibilities
-
-- data_generation: deterministic synthetic profiles, wearable observations, explicit event derivation, labels, and validation.
-- ml: trailing-window feature engineering, patient-level split, baseline and ablation training, probability calibration, evaluation, and robustness checks.
-- twin_engine: deterministic replay cursor, evolving patient state, forecast history, and isolated hypothetical scenarios.
-- backend: validated FastAPI contract, CORS configuration, and SQLite audit logging.
-- frontend: patient selection, current twin state, trends, calibrated forecast, model explanations, scenario comparison, ablation metrics, and disclaimers.
-
-## Leakage controls
-
-1. Patients are split before model fitting; no patient appears in more than one split.
-2. Rolling features use the current and preceding observations only.
-3. Missing values use patient-forward-fill or declared static baselines; no backward-fill is used.
-4. Event logs, event-active flags, hidden simulator episode flags, and future labels are excluded from model features.
-5. The validation group is used for calibration and alert-threshold selection; final metrics are reported on held-out test patients.
-
-## Event definition
-
-Personal reference baselines are the median valid heart rate and systolic blood pressure over the first 12 simulated hours. A synthetic deterioration event is a contiguous run of at least four five-minute observations (20 minutes) in which heart rate is at least 22 bpm above that reference and systolic pressure is at least 17 mmHg above it. The event starts at the first qualifying observation and ends at the last consecutive qualifying observation. The generator spaces injected episodes apart; any naturally contiguous qualifying readings are treated as one event. The forecast target is 1 for non-event observations in the 60 minutes before onset.
-
-This is a simulator-defined pattern and is not a clinically validated endpoint.
+The live inference path never consumes the right-hand retrospective truth path.

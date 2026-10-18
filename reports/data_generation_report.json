@@ -1,10 +1,12 @@
 {
-  "seed_patients": 42,
-  "seed_wearables": 43,
-  "patients": 60,
-  "observations": 34560,
-  "events": 90,
+  "patient_seed": 42,
+  "physiology_seed": 43,
+  "patients": 120,
+  "observations": 103680,
+  "latent_rows": 103680,
+  "events": 271,
   "cadence_minutes": 5,
-  "days": 2,
+  "days": 3,
+  "event_source": "hidden_latent_deterioration_state",
   "synthetic_only": true
 }
